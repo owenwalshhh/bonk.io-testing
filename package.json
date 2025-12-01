@@ -1,0 +1,14 @@
+{
+  "name": "bonkio-remix",
+  "version": "1.0.0",
+  "description": "Minimal web-based multiplayer physics brawler",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "NODE_ENV=development node server.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18"
+  }
+}
