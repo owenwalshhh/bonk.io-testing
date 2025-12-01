@@ -34,6 +34,16 @@
   pwd
   ls package.json server.js public
   ```
-  If those files do not show up, `cd` into the folder you cloned (e.g., `cd ~/bonk.io-testing`) or re-clone the repo with the commands in step 1, then rerun `npm install`.
+  If those files do not show up, you are not inside a complete copy of the project. Fix it with one of these options:
+  - Re-enter the folder you cloned (for example, `cd ~/bonk.io-testing`).
+  - If the folder exists but is missing files (common after an incomplete download), remove it and reclone:
+    ```bash
+    rm -rf ~/bonk.io-testing
+    git clone https://github.com/your-org/bonk.io-testing.git
+    cd bonk.io-testing
+    npm install
+    npm start
+    ```
+  - If you downloaded a ZIP, double-check that you extracted **all** files into a new folder before running npm commands from that folder.
 - If you see "address already in use", another process is using the port. Either stop it (e.g., `lsof -i :3000`) or set a different `PORT`.
 - Ensure your macOS firewall allows incoming connections for Node.js if you're testing across devices on the same network.
