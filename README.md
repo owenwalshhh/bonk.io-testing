@@ -29,5 +29,6 @@
   ```
 
 ## Troubleshooting
+- If npm reports `Could not read package.json`, double-check that you are inside the project folder that contains `package.json` and `server.js` (run `ls` to confirm). If those files are missing, re-clone the repo or update your checkout, then re-run `npm install`.
 - If you see "address already in use", another process is using the port. Either stop it (e.g., `lsof -i :3000`) or set a different `PORT`.
 - Ensure your macOS firewall allows incoming connections for Node.js if you're testing across devices on the same network.
