@@ -10,6 +10,14 @@
   --accent-2: #8cb3ff;
   --danger: #ff8fb1;
   --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+:root {
+  --bg: #05090e;
+  --panel: #0e1522;
+  --accent: #7af7d5;
+  --accent-2: #8ea6ff;
+  --text: #e9f2ff;
+  --muted: #7f8a9f;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -226,6 +234,62 @@ textarea {
   max-height: 520px;
   overflow: auto;
   padding-left: 12px;
+  background: radial-gradient(circle at 30% 20%, rgba(122, 247, 213, 0.08), transparent 20%),
+    radial-gradient(circle at 80% 40%, rgba(142, 166, 255, 0.12), transparent 26%),
+    var(--bg);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+}
+
+#arena {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(145deg, #0b1624, #090f1b);
+}
+
+#ui {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(10, 18, 30, 0.85);
+  border: 1px solid rgba(122, 247, 213, 0.15);
+  border-radius: 12px;
+  padding: 12px 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  max-width: 320px;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.stats {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.status {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+#scoreboard {
+  margin-top: 12px;
+  display: grid;
+  gap: 6px;
 }
 
 .score-row {
@@ -346,5 +410,37 @@ textarea {
   header {
     grid-template-columns: 1fr;
     gap: 8px;
+  grid-template-columns: 1fr 60px 60px;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.score-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 8px;
+  background: rgba(122, 247, 213, 0.14);
+  color: var(--accent);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  #ui {
+    max-width: 90vw;
+  }
+  .score-row {
+    grid-template-columns: 1fr 50px 50px;
   }
 }

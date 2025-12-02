@@ -28,6 +28,7 @@ If those files are missing, re-extract or reclone the repo, then rerun the comma
 PORT=4000 node server.js
 ```
 This starts the server on port 3000 (or the port you set). Open `http://localhost:3000` in your browser to play.
+This starts the server on port 3000 (or the port you set) and prints your Node version so you can confirm the right binary is used. Open `http://localhost:3000` in your browser to play.
 
 ## Standard npm flow (optional)
 `npm install` is only needed to generate `package-lock.json`; there are no third-party dependencies. If you prefer npm scripts:
