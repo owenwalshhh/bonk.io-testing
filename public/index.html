@@ -7,6 +7,157 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="auth-overlay" class="glass">
+    <div class="panel">
+      <div class="brand">Pulse Arena</div>
+      <p class="muted">Log in or sign up to hop into lobbies. Everything is simulated client-side so you can experiment offline.</p>
+      <label>Username</label>
+      <input id="auth-username" type="text" placeholder="bonkfan" />
+      <label>Password</label>
+      <input id="auth-password" type="password" placeholder="••••••" />
+      <div class="row">
+        <button id="auth-login">Log in</button>
+        <button id="auth-signup" class="ghost">Sign up</button>
+      </div>
+      <small class="muted">Tip: use <strong>owenwlsh</strong> to unlock admin commands.</small>
+    </div>
+  </div>
+
+  <div id="shell">
+    <header>
+      <div class="brand">Pulse Arena</div>
+      <div class="player-chip">
+        <div id="session-name">Guest</div>
+        <div id="session-role" class="muted">Not signed in</div>
+      </div>
+      <div class="mini-stats">
+        <div id="current-game">No game joined</div>
+        <div id="current-map" class="muted">—</div>
+      </div>
+    </header>
+
+    <main>
+      <section id="lobby" class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Lobby</h3>
+            <p class="muted">Browse rooms, join, or host your own.</p>
+          </div>
+          <button id="refresh-lobby" class="ghost">Refresh</button>
+        </div>
+        <div id="games-list" class="list"></div>
+        <div class="divider"></div>
+        <form id="create-game" class="form-grid">
+          <div>
+            <label>Game name</label>
+            <input id="game-name" type="text" value="Custom Room" />
+          </div>
+          <div>
+            <label>Mode</label>
+            <select id="game-mode">
+              <option>Score Race</option>
+              <option>Survival</option>
+              <option>King of the Orbit</option>
+            </select>
+          </div>
+          <div>
+            <label>Map</label>
+            <select id="game-map"></select>
+          </div>
+          <div class="row">
+            <button type="submit">Host game</button>
+            <button type="button" id="solo-start" class="ghost">Quick start solo</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="game" class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Live Match</h3>
+            <p class="muted">Fully simulated “multiplayer” with AI stand-ins.</p>
+          </div>
+          <div class="row compact">
+            <button id="toggle-editor" class="ghost">Map editor</button>
+            <button id="leave-game" class="ghost">Leave</button>
+          </div>
+        </div>
+        <div class="game-wrap">
+          <div class="canvas-wrap">
+            <canvas id="arena"></canvas>
+            <div class="hud">
+              <div id="hud-info"></div>
+              <div id="hud-tip" class="muted"></div>
+            </div>
+          </div>
+          <div class="scoreboard" id="scoreboard"></div>
+        </div>
+      </section>
+
+      <section id="chat" class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Chat</h3>
+            <p class="muted">Global chat plus admin commands for owenwlsh.</p>
+          </div>
+          <div id="chat-presence" class="muted"></div>
+        </div>
+        <div id="chat-log" class="chat-log"></div>
+        <form id="chat-form" class="row">
+          <input id="chat-input" type="text" placeholder="Say hi or run /spawn botname" autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <section id="editor" class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>Map editor</h3>
+            <p class="muted">Create simple Bonk-style arenas with pads and hazards.</p>
+          </div>
+          <button id="close-editor" class="ghost">Close</button>
+        </div>
+        <div class="form-grid">
+          <div>
+            <label>Map name</label>
+            <input id="map-name" type="text" value="Custom Neon" />
+          </div>
+          <div>
+            <label>Theme tint</label>
+            <input id="map-tint" type="color" value="#7af7d5" />
+          </div>
+          <div>
+            <label>Hazard radius</label>
+            <input id="map-hazard" type="range" min="80" max="240" value="160" />
+          </div>
+        </div>
+        <div class="editor-grid">
+          <div>
+            <canvas id="map-canvas" width="500" height="300"></canvas>
+          </div>
+          <div class="stack">
+            <div class="row compact">
+              <input id="platform-x" type="number" placeholder="x" />
+              <input id="platform-y" type="number" placeholder="y" />
+              <input id="platform-w" type="number" placeholder="width" />
+              <input id="platform-h" type="number" placeholder="height" />
+              <button id="add-platform" type="button" class="ghost">Add platform</button>
+            </div>
+            <div class="row compact">
+              <input id="spawn-x" type="number" placeholder="spawn x" />
+              <input id="spawn-y" type="number" placeholder="spawn y" />
+              <button id="add-spawn" type="button" class="ghost">Add spawn</button>
+            </div>
+            <div class="stack mini" id="platform-list"></div>
+            <div class="row">
+              <button id="save-map" type="button">Save map</button>
+              <button id="clear-map" type="button" class="ghost">Clear</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
   <div id="ui">
     <div class="brand">Pulse Arena</div>
     <div class="stats">

@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #0a0f1b;
+  --panel: rgba(255, 255, 255, 0.03);
+  --line: rgba(255, 255, 255, 0.06);
+  --text: #e6eeff;
+  --muted: #7c8aa8;
+  --accent: #7af7d5;
+  --accent-2: #8cb3ff;
+  --danger: #ff8fb1;
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 :root {
   --bg: #05090e;
   --panel: #0e1522;
@@ -14,6 +26,214 @@
 
 body {
   margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(122, 247, 213, 0.04), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(140, 179, 255, 0.05), transparent 45%), var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+#shell {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(120deg, rgba(122, 247, 213, 0.08), rgba(140, 179, 255, 0.06));
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.player-chip {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.mini-stats {
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+main {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  grid-template-rows: auto auto;
+  gap: 14px;
+}
+
+#game {
+  grid-row: span 2;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+h3 {
+  margin: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.row.compact {
+  gap: 6px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stack.mini {
+  max-height: 220px;
+  overflow: auto;
+  padding: 6px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: var(--text);
+}
+
+button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #021019;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+button.ghost {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border: 1px solid var(--line);
+  box-shadow: none;
+}
+
+input,
+select,
+textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.divider {
+  height: 1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-size: 0.85rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.canvas-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.canvas-wrap canvas {
+  width: 100%;
+  height: 520px;
+  display: block;
+  background: radial-gradient(circle at 25% 20%, rgba(122, 247, 213, 0.06), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(140, 179, 255, 0.05), transparent 50%), #050814;
+}
+
+.hud {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.scoreboard {
+  width: 220px;
+  max-height: 520px;
+  overflow: auto;
+  padding-left: 12px;
   background: radial-gradient(circle at 30% 20%, rgba(122, 247, 213, 0.08), transparent 20%),
     radial-gradient(circle at 80% 40%, rgba(142, 166, 255, 0.12), transparent 26%),
     var(--bg);
@@ -74,6 +294,122 @@ body {
 
 .score-row {
   display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.score-color {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.game-wrap {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 12px;
+}
+
+#chat-log {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  min-height: 200px;
+  max-height: 280px;
+  padding: 10px;
+  overflow: auto;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-line {
+  line-height: 1.4;
+}
+
+.chat-line .name {
+  font-weight: 700;
+}
+
+.chat-line .time {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+#auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 15, 0.86);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#auth-overlay.hidden {
+  display: none;
+}
+
+.glass {
+  border: 1px solid var(--line);
+}
+
+.editor-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 12px;
+}
+
+#map-canvas {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: radial-gradient(circle at 60% 20%, rgba(122, 247, 213, 0.08), transparent 55%), #040712;
+}
+
+#platform-list div {
+  border-bottom: 1px solid var(--line);
+  padding: 6px 0;
+}
+
+#platform-list div:last-child {
+  border-bottom: none;
+}
+
+.game-card-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1100px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  .game-wrap {
+    grid-template-columns: 1fr;
+  }
+  .scoreboard {
+    width: 100%;
+    max-height: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  header {
+    grid-template-columns: 1fr;
+    gap: 8px;
   grid-template-columns: 1fr 60px 60px;
   align-items: center;
   gap: 6px;

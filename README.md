@@ -1,5 +1,11 @@
 # Pulse Arena (Bonk.io-inspired prototype)
 
+## What's inside now
+- **Client-side simulation only**: everything runs in the browser (no WebSocket server), but the UI mirrors Bonk-style flows with log in/sign up, lobby, chat, room creation, and AI bots to fill seats.
+- **Lobby & rooms**: join existing rooms or host one with a map and mode. Bots auto-fill seeded rooms; the user `owenwlsh` unlocks admin commands like `/spawn bot` and `/boost name 10`.
+- **Live canvas play**: WASD/arrow keys move, Space dashes. Hazard ring, platforms, and energy orbs are simulated locally.
+- **Map editor**: add rectangular pads, spawns, and hazard radius, then save to the map selector.
+
 ## Prerequisites
 - Node.js 18 or newer. On macOS you can install it with Homebrew (`brew install node@20`) or nvm (`nvm install 20 && nvm use 20`).
 - A modern browser (Chrome, Edge, Firefox, or Safari).
@@ -21,6 +27,7 @@ If those files are missing, re-extract or reclone the repo, then rerun the comma
 ```bash
 PORT=4000 node server.js
 ```
+This starts the server on port 3000 (or the port you set). Open `http://localhost:3000` in your browser to play.
 This starts the server on port 3000 (or the port you set) and prints your Node version so you can confirm the right binary is used. Open `http://localhost:3000` in your browser to play.
 
 ## Standard npm flow (optional)
@@ -29,6 +36,17 @@ This starts the server on port 3000 (or the port you set) and prints your Node v
 npm install
 npm start              # or: PORT=4000 npm start
 ```
+
+## How to play & explore
+1. Open the page, enter a username (use **owenwlsh** for admin), and log in. The overlay will disappear and you'll be dropped into a room.
+2. Move with **WASD/Arrow keys** and **Space** to dash. AI bots wander and collect orbs; collisions and gravity wells are simulated locally.
+3. Use the lobby panel to host a new room (pick a mode + map) or spectate other rooms.
+4. Use chat to talk or run commands:
+   - `/spawn botname` (admin) adds an AI bot to the active room.
+   - `/boost player 10` (admin) gives points.
+   - `/wipe` removes all orbs in the current room.
+   - `/tip` rotates the HUD tip.
+5. Open the **Map editor** to add rectangular platforms and spawn points, set a hazard radius, and save. Your custom map shows up in the map selector for new rooms.
 
 ## Development tips
 - Use `npm run dev` (or `NODE_ENV=development node server.js`) to start the server with the `NODE_ENV=development` flag. You can edit files in `public/` and refresh the browser to see changes.
