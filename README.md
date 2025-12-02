@@ -8,7 +8,18 @@
 If `npm install` is giving you trouble, you can run the project directly with the built-in Node server (no dependencies required):
 ```bash
 cd /path/to/bonk.io-testing
-./run-direct.sh        # or: PORT=4000 ./run-direct.sh
+# Works with bash or zsh
+dos2unix run-direct.sh 2>/dev/null || true  # safe no-op if dos2unix isn't installed
+bash ./run-direct.sh      # or: PORT=4000 bash ./run-direct.sh
+```
+If you see `zsh: no such file or directory: ./run-direct.sh`, double-check that you're in the folder that actually contains `run-direct.sh`:
+```bash
+pwd
+ls run-direct.sh server.js public
+```
+If those files are missing, re-extract or reclone the repo, then rerun the command. As an absolute fallback, you can launch the server directly without the helper script (from inside the project folder):
+```bash
+PORT=4000 node server.js
 ```
 This starts the server on port 3000 (or the port you set) and prints your Node version so you can confirm the right binary is used. Open `http://localhost:3000` in your browser to play.
 
